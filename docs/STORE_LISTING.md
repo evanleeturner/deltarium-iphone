@@ -147,18 +147,26 @@ runs on device with no network.
 
 ## Screenshots (iPhone-only app, so 1 size class)
 
-All files are 1290x2796, the accepted 6.9-inch iPhone size. The app targets
-iPhone only (`TARGETED_DEVICE_FAMILY = 1`), so no iPad set is required.
-Suggested order, drawn from `docs/screenshots/` and `docs/store-assets/`:
+**Upload the files in `docs/store-assets/appstore/` — 1284x2778 exactly.**
+The App Store Connect uploader for this listing accepts only 1242x2688,
+2688x1242, 1284x2778, or 2778x1284 (its own error lists them; the raw
+1290x2796 captures were refused, 2026-07-27). The store set is the raw
+captures center-cropped by 6x18 px (3 off each side, 9 off top and bottom),
+which reaches 1284x2778 with the status bar intact and nothing visible
+lost. Recipe, if the raw shots in `docs/screenshots/` ever change:
+PIL `crop((3, 9, 1287, 2787))` on each 1290x2796 file.
 
-1. `screenshots/home.png` — the hall of worlds
-2. `screenshots/predator-prey.png`
-3. `screenshots/butterfly.png`
-4. `screenshots/time-dilation.png`
-5. `store-assets/radioactivity.png`
-6. `screenshots/build-your-own.png`
-7. `store-assets/build-your-own-equations.png`
-8. `store-assets/build-your-own-coefficients.png`
+The app targets iPhone only (`TARGETED_DEVICE_FAMILY = 1`), so no iPad set
+is required. Suggested order (all in `store-assets/appstore/`):
+
+1. `home.png` — the hall of worlds
+2. `predator-prey.png`
+3. `butterfly.png`
+4. `time-dilation.png`
+5. `radioactivity.png`
+6. `build-your-own.png`
+7. `build-your-own-equations.png`
+8. `build-your-own-coefficients.png`
 
 ## Order of operations to 1.0.0
 
