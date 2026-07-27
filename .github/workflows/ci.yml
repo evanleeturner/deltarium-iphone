@@ -1,0 +1,42 @@
+# CI — form per EVANS_CONFIG_FORMAT, semantics per EVANS_GITHUB_ACTIONS.
+# Hardened from commit one: least-privilege permissions, SHA-pinned actions,
+# no credential persistence, bounded concurrency and timeout, named steps,
+# versioned runner. Swift toolchain + build/test/lint steps mirror the
+# ham-measure lane.
+---
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read                       # least privilege; no job here writes
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: EasyModelerKit  # the pure-logic package builds + tests on Linux
+
+jobs:
+  check:
+    name: check
+    runs-on: ubuntu-24.04              # versioned label, not -latest
+    container: swift:6.3.3             # the toolchain, pinned to the box's version
+    timeout-minutes: 15
+    steps:
+      - name: Check out the tree
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false   # no later step pushes
+      - name: Toolchain
+        run: swift --version
+      - name: Build
+        run: swift build
+      - name: Test
+        run: swift test
+      - name: Lint (the format crown's gate)
+        run: swift format lint --strict --recursive Sources Tests

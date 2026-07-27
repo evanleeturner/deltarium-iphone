@@ -1,0 +1,8 @@
+# Every committed text file is LF, per EVANS_TEXT_FORMAT (the character floor):
+# the least tolerant consumer sets the law, and here that is Swift — it treats
+# "\r\n" as one grapheme, so a CRLF fixture parses as garbage, not an error.
+* text=auto eol=lf
+
+# The fidelity fixtures are LF data — never let a CRLF-writing tool (a stdlib
+# csv.writer defaults to CRLF per RFC 4180) slip a carriage return into the tree.
+*.csv text eol=lf

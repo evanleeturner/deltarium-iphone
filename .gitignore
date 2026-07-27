@@ -1,0 +1,23 @@
+# SwiftPM
+.build/
+.swiftpm/
+
+# Xcode user state
+xcuserdata/
+DerivedData/
+
+# xtool shell build artifacts (App/ arrives at a later phase)
+App/.build/
+App/xtool/
+
+# Signing key and Xcode archive — these live OUTSIDE the repo, never in git
+*.p8
+*.xip
+
+# Python bytecode from the fixture-export tools
+__pycache__/
+*.pyc
+
+# macOS / editor cruft
+.DS_Store
+*.swp

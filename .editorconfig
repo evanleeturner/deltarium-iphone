@@ -1,0 +1,24 @@
+# EditorConfig — every editor emits the same raw text.
+# Per EVANS_TEXT_FORMAT (the character floor): UTF-8, LF, final newline.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+# The Python provenance tool follows EVANS_PYTHON_FORMAT: 4-space, 88 columns.
+[*.py]
+indent_size = 4
+max_line_length = 88
+
+# YAML and JSON are 2-space by their own conventions.
+[*.{yml,yaml,json}]
+indent_size = 2
+
+# Markdown hard line breaks are significant trailing whitespace.
+[*.md]
+trim_trailing_whitespace = false

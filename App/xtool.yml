@@ -1,0 +1,5 @@
+version: 1
+bundleID: com.evanleeturner.easymodeler
+product: EasyModelerApp
+infoPath: Support/Info.plist
+iconPath: Resources/AppIcon.png
