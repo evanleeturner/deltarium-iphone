@@ -14,6 +14,10 @@ App/xtool/
 *.p8
 *.xip
 
+# Release-lane runner artifacts (XcodeGen output; see project.yml)
+Deltarium.xcodeproj/
+App/Support/Info-store.plist
+
 # Python bytecode from the fixture-export tools
 __pycache__/
 *.pyc

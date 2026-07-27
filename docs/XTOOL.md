@@ -42,6 +42,14 @@ Development builds and device installs are proven end-to-end (owner device gates
 
 ## Distribution: the Linux → App Store path (research, 2026-07-26)
 
+> **Decision (2026-07-26): option (c), the macOS CI runner.** The lane is
+> `.github/workflows/release.yml` (manual trigger): XcodeGen generates the
+> project from `project.yml`, `xcodebuild archive` + `-exportArchive` with
+> cloud-managed signing via the ASC `.p8` (repo secrets `ASC_KEY_ID`,
+> `ASC_ISSUER_ID`, `ASC_PRIVATE_KEY`), destination `upload`. Xcode stamps the
+> DT\* keys and compiles `Assets.car` from `App/Assets.xcassets`. The research
+> below is kept as the record of why.
+
 Development and device installs are proven; **App Store distribution is a
 separate, unproven lane**. Findings from a research spike:
 

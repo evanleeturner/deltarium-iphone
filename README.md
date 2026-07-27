@@ -97,8 +97,11 @@ swift format lint --strict --recursive Sources Tests
 
 The app itself is built and signed from Linux with
 [xtool](https://github.com/xtool-org/xtool) and Swift 6.3.3, with no Mac in the
-loop. The toolchain notes are in [`docs/XTOOL.md`](docs/XTOOL.md), and the whole
-system and roadmap are in [`docs/SYSTEM_PLAN.md`](docs/SYSTEM_PLAN.md).
+loop. App Store builds are the one exception: a GitHub-hosted Mac runner
+archives and uploads them (`.github/workflows/release.yml`), because store
+validation requires pieces only Xcode produces. The toolchain notes are in
+[`docs/XTOOL.md`](docs/XTOOL.md), and the whole system and roadmap are in
+[`docs/SYSTEM_PLAN.md`](docs/SYSTEM_PLAN.md).
 
 ## Privacy
 
